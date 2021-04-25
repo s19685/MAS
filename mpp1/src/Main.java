@@ -21,8 +21,8 @@ public class Main {
         Flat.showExtent();
 
         System.out.println("==========SHOW=============");
-        System.out.println("normal price " + Flat.getListOfFlats().get(1).getPrice());
-        System.out.println("price per person " + ((Apartment) Flat.getListOfFlats().get(1)).getPrice(5));
+        System.out.println("overriding: normal price " + Flat.getListOfFlats().get(1).getPrice());
+        System.out.println("overloading: price per person " + ((Apartment) Flat.getListOfFlats().get(1)).getPrice(5));
     }
 
     private static void createObjects() {
