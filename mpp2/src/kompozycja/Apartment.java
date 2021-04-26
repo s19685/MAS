@@ -25,7 +25,6 @@ public class Apartment {
         Apartment apartment = new Apartment(flatNumber, area, details, building);
         building.addApartment(apartment);
 
-
         return apartment;
     }
 

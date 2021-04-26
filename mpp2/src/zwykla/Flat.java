@@ -22,6 +22,7 @@ public class Flat {
         this.flatNumber = flatNumber;
         this.area = area;
         this.details = details;
+        this.furnitures = new ArrayList<>();
         for (Furniture f : furnitures) addFurniture(f);
 
     }
@@ -53,5 +54,13 @@ public class Flat {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public List<Furniture> getFurnitures() {
+        return furnitures;
+    }
+
+    public void setFurnitures(List<Furniture> furnitures) {
+        this.furnitures = furnitures;
     }
 }

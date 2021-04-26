@@ -14,6 +14,8 @@ public class TenatInApartment {
         this.tenat = tenat;
         this.apartment = apartment;
         this.dateFrom = dateFrom;
+        tenat.addTenatInApartment(this);
+        apartment.addTenatInApartment(this);
     }
 
     public Tenat getTenat() {
@@ -46,5 +48,15 @@ public class TenatInApartment {
 
     public void setDateTo(LocalDate dateTo) {
         this.dateTo = dateTo;
+    }
+
+    @Override
+    public String toString() {
+        return "TenatInApartment{" +
+                "tenat=" + tenat +
+                ", apartment=" + apartment +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                '}';
     }
 }

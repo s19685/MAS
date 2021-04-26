@@ -20,7 +20,6 @@ public class Apartment {
 
     public void addTenatInApartment(TenatInApartment item){
         tenatInApartments.add(item);
-        item.setApartment(this);
     }
 
     public int getFlatNumber() {
@@ -45,5 +44,13 @@ public class Apartment {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public List<TenatInApartment> getTenatInApartments() {
+        return tenatInApartments;
+    }
+
+    public void setTenatInApartments(List<TenatInApartment> tenatInApartments) {
+        this.tenatInApartments = tenatInApartments;
     }
 }

@@ -18,7 +18,9 @@ public class Tenat {
         tenatInApartments = new ArrayList<>();
     }
 
-
+    public void addTenatInApartment(TenatInApartment item){
+        tenatInApartments.add(item);
+    }
 
     public String getFirstName() {
         return firstName;
@@ -42,5 +44,13 @@ public class Tenat {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public List<TenatInApartment> getTenatInApartments() {
+        return tenatInApartments;
+    }
+
+    public void setTenatInApartments(List<TenatInApartment> tenatInApartments) {
+        this.tenatInApartments = tenatInApartments;
     }
 }

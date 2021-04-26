@@ -5,17 +5,17 @@ import java.util.List;
 
 public class Building {
 
+    private static List<Apartment> allApartments = new ArrayList<>();
+
     private String name;
     private boolean deleted;
 
     private List<Apartment> apartments;
-    
-    private static List<Apartment> allApartments = new ArrayList<>();
 
     public Building(String name) {
         this.name = name;
+        deleted = false;
         apartments = new ArrayList<>();
-
     }
 
     public String getName() {
@@ -50,9 +50,8 @@ public class Building {
     }
 
     public void deleteBuilding(){
-        for (Apartment a : apartments) {
-            a.setDeleted(true);
-        }
+        for (Apartment a : apartments) a.setDeleted(true);
+
         this.setDeleted(true);
     }
 }
