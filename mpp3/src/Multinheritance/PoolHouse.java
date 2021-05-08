@@ -10,11 +10,18 @@ public class PoolHouse implements Poolable {
 
     @Override
     public double getPoolSize() {
-        return 0;
+        return this.poolSize;
     }
 
     @Override
     public void setPoolSize(double size) {
+        this.poolSize = size;
+    }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + " " +
+               getClass().getInterfaces()[0].getSimpleName() + " " +
+               poolSize;
     }
 }

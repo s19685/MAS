@@ -36,4 +36,13 @@ public class Apartment {
     public void setDetails(String details) {
         this.details = details;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName()+
+               "{flatNumber=" + flatNumber +
+               ", area=" + area +
+               ", details='" + details + '\'' +
+               '}';
+    }
 }

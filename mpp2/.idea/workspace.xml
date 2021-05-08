@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab975429-16d3-4528-aa4c-f8f2e0c135d5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../mpp3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Abstract/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Abstract/Student.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Abstract/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Dynamic/FlatOwner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Dynamic/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Dynamic/Supervisor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multiaspect/Apartment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multiaspect/Flat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multiaspect/Villa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multinheritance/Apartment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multinheritance/PoolHouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multinheritance/Poolable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Multinheritance/Villa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Overlapping/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mpp3/src/Overlapping/PersonType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ab975429-16d3-4528-aa4c-f8f2e0c135d5" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

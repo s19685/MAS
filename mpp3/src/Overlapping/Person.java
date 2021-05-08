@@ -15,6 +15,26 @@ public class Person {
 
     private EnumSet<PersonType> types = EnumSet.of(PersonType.PERSON);
 
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Person(String firstName, String lastName, Integer salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+        types.add(PersonType.SUPERVISOR);
+    }
+
+    public Person(String firstName, String lastName, String accountNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.accountNumber = accountNumber;
+        types.add(PersonType.FLAT_OWNER);
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -61,5 +81,19 @@ public class Person {
 
     public void setTypes(EnumSet<PersonType> types) {
         this.types = types;
+    }
+
+    public void addType(PersonType type) {
+        this.types.add(type);
+    }
+
+    @Override
+    public String toString() {
+        return getTypes()+"{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", salary=" + salary +
+                ", accountNumber='" + accountNumber + '\'' +
+                '}';
     }
 }

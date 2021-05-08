@@ -3,14 +3,96 @@ import Abstract.Student;
 import Abstract.Teacher;
 import Dynamic.FlatOwner;
 import Dynamic.Supervisor;
+import Multiaspect.Flat;
+import Multinheritance.Apartment;
+import Multinheritance.PoolHouse;
+import Multinheritance.Villa;
+import Overlapping.PersonType;
 
 import java.time.LocalDate;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        testAbstract();
 
-        System.out.println("=================ABSTRACT.========================");
+        testOverlapping();
+
+        testMultiInheritance();
+
+        testMultiAspect();
+
+        testDynamic();
+    }
+
+    private static void testMultiAspect() throws Exception {
+        System.out.println("================MULTIASPECT======================");
+
+        Flat flat = new Flat(65,70.0,"Default flat",false);
+        flat.setDiscountCode("KOD");
+        Multiaspect.Villa villa = new Multiaspect.Villa(43,900,"Winter villa", true,"Janek");
+        villa.setFloorsNumber(4);
+        Multiaspect.Apartment apartment = new Multiaspect.Apartment(45,213,"Studio Apartment",
+                                                                  false,4,true);
+        apartment.setDiscountCode("KOD2");
+
+        System.out.println(flat);
+        System.out.println(villa);
+        System.out.println(apartment);
+        System.out.println();
+    }
+
+    private static void testMultiInheritance() {
+        System.out.println("==============MULTINHERITANCE====================");
+
+        Apartment apartment =  new Apartment(43,350.60,"Top floor apartment");
+        PoolHouse poolHouse = new PoolHouse(50.50);
+        Villa villa = new Villa(30,500,"Summer Villa", "Antek",90.80);
+
+        System.out.println(apartment);
+        System.out.println(poolHouse);
+        System.out.println(villa);
+
+        poolHouse.setPoolSize(70.9);
+        System.out.println(poolHouse.getPoolSize());
+        System.out.println();
+    }
+
+    private static void testOverlapping() throws Exception {
+        System.out.println("================OVERLAPPING======================");
+
+        Overlapping.Person person = new Overlapping.Person("Jan", "Klops");
+        System.out.println(person);
+
+        Overlapping.Person flatOwner = new Overlapping.Person("Karol", "Jok", "1464");
+        System.out.println(flatOwner);
+
+        Overlapping.Person supervisor = new Overlapping.Person("Andrzej", "Klips", 1500);
+        System.out.println(supervisor);
+
+        supervisor.addType(PersonType.FLAT_OWNER);
+        supervisor.setAccountNumber("314135315");
+        System.out.println(supervisor);
+        System.out.println();
+    }
+
+    private static void testDynamic() {
+        System.out.println("==================DYNAMIC========================");
+
+        Dynamic.Person person = new Dynamic.Person("alan", "alanski");
+        System.out.println(person);
+
+        Supervisor supervisor = new Supervisor(person,1000);
+        System.out.println(supervisor);
+
+        FlatOwner flatOwner = new FlatOwner(supervisor, "12435314134");
+        System.out.println(flatOwner);
+        System.out.println(supervisor);
+        System.out.println();
+    }
+
+    private static void testAbstract() {
+        System.out.println("=================ABSTRACT========================");
 
         Person person = new Student("adam", 21,"s123", LocalDate.now());
         Student student = new Student("daniel", 21,"s1223", LocalDate.now());
@@ -19,19 +101,6 @@ public class Main {
         System.out.println(person);
         System.out.println(student);
         System.out.println(teacher);
-
-        System.out.println("==================DYNAMIC========================");
-
-        Dynamic.Person person1 = new Dynamic.Person("alan", "alanski");
-
-        System.out.println(person1);
-
-        Supervisor supervisor = new Supervisor(person1,1000);
-
-        System.out.println(supervisor);
-
-        FlatOwner flatOwner = new FlatOwner(supervisor, "12435314134");
-
-        System.out.println(flatOwner);
+        System.out.println();
     }
 }

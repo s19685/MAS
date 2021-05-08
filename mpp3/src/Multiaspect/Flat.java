@@ -76,4 +76,17 @@ public class Flat {
 
         this.discountCode = discountCode;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName()+
+                "{" +
+                "flatNumber=" + flatNumber +
+                ", area=" + area +
+                ", details='" + details + '\'' +
+                ", isMultiFloored=" + isMultiFloored +
+                ", floorsNumber=" + floorsNumber +
+                ", discountCode='" + discountCode + '\'' +
+                '}';
+    }
 }
