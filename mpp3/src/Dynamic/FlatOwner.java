@@ -7,7 +7,6 @@ public class FlatOwner extends Person{
     public FlatOwner(Person p, String accountNumber) {
         super(p.getFirstName(), p.getLastName());
         this.accountNumber = accountNumber;
-        p = null;
     }
 
     public String getAccountNumber() {

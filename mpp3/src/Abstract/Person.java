@@ -16,6 +16,10 @@ public abstract class Person {
                 "{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
-                '}';
+                '}'+ sayHello();
+    }
+
+    public String sayHello(){
+        return "jestem";
     }
 }

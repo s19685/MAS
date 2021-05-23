@@ -10,6 +10,9 @@ import Multinheritance.Villa;
 import Overlapping.PersonType;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -86,6 +89,7 @@ public class Main {
         System.out.println(supervisor);
 
         FlatOwner flatOwner = new FlatOwner(supervisor, "12435314134");
+        supervisor = null;
         System.out.println(flatOwner);
         System.out.println(supervisor);
         System.out.println();
@@ -94,13 +98,14 @@ public class Main {
     private static void testAbstract() {
         System.out.println("=================ABSTRACT========================");
 
+        List<Person> people = new ArrayList<>();
+
         Person person = new Student("adam", 21,"s123", LocalDate.now());
         Student student = new Student("daniel", 21,"s1223", LocalDate.now());
-        Teacher teacher = new Teacher("daniel", 21,"s1223",12000);
+        Teacher teacher = new Teacher("daniel", 21,"doktor",12000);
+        people.addAll(Arrays.asList(person,student,teacher));
 
-        System.out.println(person);
-        System.out.println(student);
-        System.out.println(teacher);
+        for (Person p : people) System.out.println(p.sayHello());
         System.out.println();
     }
 }

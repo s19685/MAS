@@ -13,4 +13,8 @@ public class Student extends Person {
         this.startDate = startDate;
     }
 
+    @Override
+    public String sayHello() {
+        return super.sayHello() + " studentem " + studentNr;
+    }
 }

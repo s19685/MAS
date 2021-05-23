@@ -11,4 +11,9 @@ public class Teacher extends Person {
         this.scienceTitle = scienceTitle;
         this.salary = salary;
     }
+
+    @Override
+    public String sayHello() {
+        return super.sayHello() + " nauczycielem " + scienceTitle;
+    }
 }
