@@ -1,4 +1,4 @@
-package z_atrybutem;
+package bag;
 
 import java.util.ArrayList;
 import java.util.List;

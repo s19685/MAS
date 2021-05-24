@@ -12,8 +12,8 @@ public class Apartment {
     private double area;
 
 
-    public Apartment(Integer flatNumber, int parkingNumber, double area) {
-        this.flatNumber = flatNumber;
+    public Apartment(Integer flatNumber, int parkingNumber, double area) throws Exception {
+        setFlatNumber(flatNumber);
         this.parkingNumber = parkingNumber;
         this.area = area;
     }

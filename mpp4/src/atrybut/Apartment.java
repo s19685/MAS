@@ -9,10 +9,10 @@ public class Apartment {
     private double area;
 
 
-    public Apartment(int flatNumber, int parkingNumber, double area) {
+    public Apartment(int flatNumber, int parkingNumber, double area) throws Exception {
         this.flatNumber = flatNumber;
         this.parkingNumber = parkingNumber;
-        this.area = area;
+        setArea(area);
     }
 
     public int getFlatNumber() {
@@ -37,7 +37,7 @@ public class Apartment {
 
     public void setArea(double area) throws Exception {
         if(area < MINIMAL_APARTMENT_AREA) {
-            throw new Exception("Too small for apartment. minimal value: "+MINIMAL_APARTMENT_AREA);
+            throw new Exception("Too small area for apartment. minimal value: "+MINIMAL_APARTMENT_AREA);
         }
 
         this.area = area;

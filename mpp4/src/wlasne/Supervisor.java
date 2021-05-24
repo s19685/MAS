@@ -49,7 +49,7 @@ public class Supervisor {
     }
 
     public void addApartment(Apartment apartment) throws Exception {
-        if (apartments.size() >= 15) throw new Exception("too much Apartments under care");
+        if (apartments.size() >= 5) throw new Exception("too much Apartments under care");
 
         apartment.setSupervisor(this);
         apartments.add(apartment);
@@ -57,7 +57,7 @@ public class Supervisor {
     }
 
     public void setApartments(List<Apartment> apartments) throws Exception {
-        if (apartments.size() > 15) throw new Exception("too much Apartments under care");
+        if (apartments.size() > 5) throw new Exception("too much Apartments under care");
 
         for (Apartment a : apartments) a.setSupervisor(this);
         this.apartments = apartments;
