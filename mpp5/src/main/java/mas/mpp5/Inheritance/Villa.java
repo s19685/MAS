@@ -15,7 +15,7 @@ public class Villa extends Flat {
     @Column(nullable = false)
     private int parkingSlots;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private boolean hasPool;
 
     public Villa() {

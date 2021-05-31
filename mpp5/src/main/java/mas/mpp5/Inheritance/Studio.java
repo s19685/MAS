@@ -9,10 +9,10 @@ public class Studio extends Flat {
 
     public static final String DISCRIMINATOR = "STUDIO";
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private int parkingNumber;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private boolean hasBalcony;
 
     public Studio(){
