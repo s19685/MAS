@@ -3,7 +3,6 @@ package mas.mpp5.Inheritance;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STUDIO")
 @DiscriminatorValue(value = Studio.DISCRIMINATOR)
 public class Studio extends Flat {
 

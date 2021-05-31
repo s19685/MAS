@@ -3,10 +3,9 @@ package mas.mpp5.Inheritance;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "flat_type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Flat {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

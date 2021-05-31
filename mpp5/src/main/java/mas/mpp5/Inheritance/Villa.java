@@ -6,13 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "VILLA")
 @DiscriminatorValue(value = Villa.DISCRIMINATOR)
 public class Villa extends Flat {
 
     public static final String DISCRIMINATOR = "VILLA";
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int parkingSlots;
 
     @Column(nullable = true)
