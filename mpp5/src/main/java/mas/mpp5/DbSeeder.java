@@ -37,13 +37,13 @@ public class DbSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        //class
+        //Class
 
         for (int i =0; i<10;i++) {
             furnitureRepo.save(new Furniture("Krzeslo",Math.random()*50,50,50));
         }
 
-        //asocjation
+        //Association
 
         Person adam = new Person("Adam", "Klips");
         Person karol = new Person("Karol", "Kondrat");
