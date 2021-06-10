@@ -1,6 +1,7 @@
 package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Furniture {
@@ -21,6 +22,9 @@ public class Furniture {
 
     @Column(nullable = false)
     private double length;
+
+    @OneToMany(mappedBy = "furniture")
+    private List<Flat> inFlats;
 
     public Furniture() {
     }
@@ -70,5 +74,13 @@ public class Furniture {
 
     public void setLength(double length) {
         this.length = length;
+    }
+
+    public List<Flat> getInFlats() {
+        return inFlats;
+    }
+
+    public void setInFlats(List<Flat> inFlats) {
+        this.inFlats = inFlats;
     }
 }
