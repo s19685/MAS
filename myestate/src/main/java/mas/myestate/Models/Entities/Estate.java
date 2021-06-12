@@ -1,6 +1,7 @@
 package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,11 +27,11 @@ public class Estate {
 
     public Estate() {}
 
-    public Estate(String name, String localization, String phoneNumber, List<Building> buildings) {
+    public Estate(String name, String localization, String phoneNumber) {
         this.name = name;
         this.localization = localization;
         this.phoneNumber = phoneNumber;
-        this.buildings = buildings;
+        buildings = new ArrayList<>();
     }
 
     public Long getId() {

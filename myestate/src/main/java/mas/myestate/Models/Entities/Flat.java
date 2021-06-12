@@ -3,6 +3,7 @@ package mas.myestate.Models.Entities;
 import mas.myestate.Models.Enums.State;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public abstract class Flat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true, nullable = false, name = "FLAT_ID")
+    @Column(unique = true, nullable = false)
     private Long id;
 
     @Column(nullable = false)
@@ -33,6 +34,7 @@ public abstract class Flat {
     @Column(nullable = false)
     private Double price;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private State state;
 
@@ -44,7 +46,7 @@ public abstract class Flat {
     @JoinColumn(name = "building_id", referencedColumnName = "id")
     private Building building;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "rental_id", referencedColumnName = "id")
     private List<Rental> rentals;
 
@@ -67,6 +69,19 @@ public abstract class Flat {
         this.price = price;
         this.building = building;
         this.furnitures = furnitures;
+    }
+
+    public Flat(int flatNumber, String entrycode, String details, Integer roomsNumber,
+                Double area, Double price, List<Furniture> furnitures) {
+        this.state = State.FOR_SALE;
+        this.flatNumber = flatNumber;
+        this.entrycode = entrycode;
+        this.details = details;
+        this.roomsNumber = roomsNumber;
+        this.area = area;
+        this.price = price;
+        this.furnitures = furnitures;
+        this.furnitures = new ArrayList<>();
     }
 
 

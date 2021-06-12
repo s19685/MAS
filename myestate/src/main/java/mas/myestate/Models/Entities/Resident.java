@@ -29,37 +29,37 @@ public class Resident {
     @Column(nullable = true)
     private Double salary;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EnumSet<Role> roles = EnumSet.of(Role.RESIDENT);
+    private Role roles;
 
     @OneToMany(mappedBy = "resident")
     private List<Rental> rentals;
 
-    @OneToMany(mappedBy = "flats")
+    @OneToMany(mappedBy = "owner")
     private List<Flat> flats;
 
-    public Resident() {}
+    public Resident() {
+    }
 
     public Resident(String firtName, String lastName) {
         this.firtName = firtName;
         this.lastName = lastName;
-        roles.add(Role.TENAT);
-
+        this.roles = Role.USER;
     }
 
     public Resident(String firtName, String lastName, String accountNumber) {
         this.firtName = firtName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
-        roles.add(Role.OWNER);
+        this.roles = Role.OWNER;
     }
 
     public Resident(String firtName, String lastName, Double salary) {
         this.firtName = firtName;
         this.lastName = lastName;
         this.salary = salary;
-        roles.add(Role.SUPERVISOR);
-
+        this.roles = Role.SUPERVISOR;
     }
 
     public Long getId() {
@@ -110,13 +110,9 @@ public class Resident {
         this.salary = salary;
     }
 
-    public EnumSet<Role> getRoles() {
-        return roles;
-    }
+    public Role getRoles() { return roles; }
 
-    public void setRoles(EnumSet<Role> roles) {
-        this.roles = roles;
-    }
+    public void setRoles(Role roles) { this.roles = roles; }
 
     public List<Rental> getRentals() {
         return rentals;
@@ -131,6 +127,16 @@ public class Resident {
     }
 
     public void setFlats(List<Flat> flats) {
+        for (Flat f: flats) f.setOwner(this);
         this.flats = flats;
+    }
+
+    public void addFlat(Flat flat){
+        flat.setOwner(this);
+        this.flats.add(flat);
+    }
+
+    public void rentFlat(Flat flat){
+
     }
 }

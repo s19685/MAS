@@ -23,7 +23,7 @@ public class Furniture {
     @Column(nullable = false)
     private double length;
 
-    @OneToMany(mappedBy = "furniture")
+    @ManyToMany
     private List<Flat> inFlats;
 
     public Furniture() {

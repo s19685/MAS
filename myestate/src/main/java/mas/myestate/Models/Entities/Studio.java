@@ -15,4 +15,9 @@ public class Studio extends Flat {
         super(flatNumber, entrycode, details, roomsNumber, area, price, building, furnitures);
     }
 
+    public Studio(int flatNumber, String entrycode, String details, Integer roomsNumber,
+                  Double area, Double price, List<Furniture> furnitures) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price, furnitures);
+    }
+
 }

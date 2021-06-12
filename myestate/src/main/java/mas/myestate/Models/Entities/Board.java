@@ -1,6 +1,7 @@
 package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,10 +15,11 @@ public class Board {
     private Long id;
 
     @OneToMany(mappedBy = "board")
-    private List<Annoucement> annoucements;
+    private List<Annoucement> annoucements = new ArrayList<>();
 
-    @ManyToMany
-    private List<Building> buildings;
+    @ManyToOne
+    @JoinColumn(name = "building_id", referencedColumnName = "id")
+    private Building building;
 
     public Board() {}
 
@@ -38,12 +40,17 @@ public class Board {
         this.annoucements = annoucements;
     }
 
-    public List<Building> getBuildings() {
-        return buildings;
+    public Building getBuilding() {
+        return building;
     }
 
-    public void setBuildings(List<Building> buildings) {
-        this.buildings = buildings;
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
+
+    public void addAnnoucment(Annoucement annoucement) {
+        annoucement.setBoard(this);
+        annoucements.add(annoucement);
     }
 }
 

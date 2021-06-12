@@ -18,7 +18,7 @@ public class Building {
     private String address;
 
     @ManyToOne
-    @JoinColumn(name = "board_id", referencedColumnName = "id")
+    @JoinColumn(name = "estate_id", referencedColumnName = "id")
     private Estate estate;
 
     @OneToMany(mappedBy = "building")
@@ -35,7 +35,7 @@ public class Building {
         this.address = address;
         this.estate = estate;
         this.flats = flats;
-
+        for (Flat f: flats) f.setBuilding(this);
     }
 
     public Long getId() {

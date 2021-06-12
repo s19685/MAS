@@ -24,6 +24,12 @@ public class Apartment extends Flat {
         this.parkingNumber = parkingNumber;
     }
 
+    public Apartment(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
+                     Double price, List<Furniture> furnitures, Integer parkingNumber) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price, furnitures);
+        this.parkingNumber = parkingNumber;
+    }
+
     public Integer getParkingNumber() {
         return parkingNumber;
     }

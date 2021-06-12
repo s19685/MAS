@@ -1,5 +1,5 @@
 package mas.myestate.Models.Enums;
 
 public enum Role {
-    OWNER,TENAT,SUPERVISOR,RESIDENT
+    OWNER,TENAT,SUPERVISOR,USER
 }
