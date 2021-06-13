@@ -1,6 +1,7 @@
 package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,13 +16,13 @@ public class Furniture {
     private String name;
 
     @Column(nullable = false)
-    private double height;
+    private Double height;
 
     @Column(nullable = false)
-    private double width;
+    private Double width;
 
     @Column(nullable = false)
-    private double length;
+    private Double length;
 
     @ManyToMany
     private List<Flat> inFlats;
@@ -29,11 +30,13 @@ public class Furniture {
     public Furniture() {
     }
 
-    public Furniture(String name, double height, double width, double length) {
+    public Furniture(String name, Double height, Double width, Double length) {
         this.name = name;
         this.height = height;
         this.width = width;
         this.length = length;
+        this.inFlats = new ArrayList<>();
+
     }
 
     public Long getId() {
@@ -52,27 +55,27 @@ public class Furniture {
         this.name = name;
     }
 
-    public double getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 
-    public double getWidth() {
+    public Double getWidth() {
         return width;
     }
 
-    public void setWidth(double width) {
+    public void setWidth(Double width) {
         this.width = width;
     }
 
-    public double getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
@@ -82,5 +85,9 @@ public class Furniture {
 
     public void setInFlats(List<Flat> inFlats) {
         this.inFlats = inFlats;
+    }
+
+    public void addToinFlats(Flat flat) {
+        this.inFlats.add(flat);
     }
 }

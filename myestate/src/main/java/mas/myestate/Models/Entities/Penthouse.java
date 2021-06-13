@@ -23,8 +23,8 @@ public class Penthouse extends Flat {
     }
 
     public Penthouse(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price, List<Furniture> furnitures, boolean isWithPool) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price, furnitures);
+                     Double price,  boolean isWithPool) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price);
         this.isWithPool = isWithPool;
     }
 

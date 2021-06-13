@@ -2,6 +2,7 @@ package mas.myestate.Models.Entities;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,7 @@ public class IotDevice {
     public IotDevice(String name, Double price) {
         this.name = name;
         this.price = price;
+        this.inFlats = new ArrayList<>();
     }
 
     public Long getId() {
@@ -59,5 +61,9 @@ public class IotDevice {
 
     public void setInFlats(List<Flat> inFlats) {
         this.inFlats = inFlats;
+    }
+
+    public void addToinFlats(Flat flat) {
+        inFlats.add(flat);
     }
 }

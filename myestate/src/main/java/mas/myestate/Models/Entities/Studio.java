@@ -10,14 +10,17 @@ public class Studio extends Flat {
 
     public static final String DISCRIMINATOR = "STUDIO";
 
+    public Studio() {
+    }
+
     public Studio(int flatNumber, String entrycode, String details, Integer roomsNumber,
                   Double area, Double price, Building building, List<Furniture> furnitures) {
         super(flatNumber, entrycode, details, roomsNumber, area, price, building, furnitures);
     }
 
     public Studio(int flatNumber, String entrycode, String details, Integer roomsNumber,
-                  Double area, Double price, List<Furniture> furnitures) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price, furnitures);
+                  Double area, Double price) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price);
     }
 
 }

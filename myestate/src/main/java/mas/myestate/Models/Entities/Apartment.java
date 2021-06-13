@@ -25,8 +25,8 @@ public class Apartment extends Flat {
     }
 
     public Apartment(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price, List<Furniture> furnitures, Integer parkingNumber) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price, furnitures);
+                     Double price, Integer parkingNumber) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price);
         this.parkingNumber = parkingNumber;
     }
 

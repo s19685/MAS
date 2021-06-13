@@ -72,7 +72,7 @@ public abstract class Flat {
     }
 
     public Flat(int flatNumber, String entrycode, String details, Integer roomsNumber,
-                Double area, Double price, List<Furniture> furnitures) {
+                Double area, Double price) {
         this.state = State.FOR_SALE;
         this.flatNumber = flatNumber;
         this.entrycode = entrycode;
@@ -80,8 +80,11 @@ public abstract class Flat {
         this.roomsNumber = roomsNumber;
         this.area = area;
         this.price = price;
-        this.furnitures = furnitures;
-        this.furnitures = new ArrayList<>();
+        furnitures = new ArrayList<>();
+    }
+
+    public String getName(){
+        return this.getClass().getSimpleName() + " " + getRoomsNumber() + " pokoje";
     }
 
 
@@ -171,6 +174,7 @@ public abstract class Flat {
 
     public void setDevices(List<IotDevice> devices) {
         this.devices = devices;
+        for (IotDevice d : devices)  d.addToinFlats(this);
     }
 
     public List<Furniture> getFurnitures() {
@@ -180,4 +184,12 @@ public abstract class Flat {
     public void setFurnitures(List<Furniture> furnitures) {
         this.furnitures = furnitures;
     }
+
+    public void addFurnitures(List<Furniture> furnitures) {
+        for (Furniture f : furnitures){
+            this.furnitures.add(f);
+            f.addToinFlats(this);
+        }
+    }
+
 }

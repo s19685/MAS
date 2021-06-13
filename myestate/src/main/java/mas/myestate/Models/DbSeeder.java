@@ -45,6 +45,7 @@ public class DbSeeder implements CommandLineRunner {
         //FURNITURES AND DEVICES
 
         List<Furniture> furnitures = seedFurnitures();
+        furnitureRepo.saveAll(furnitures);
 
         seedDevices();
 
@@ -58,27 +59,24 @@ public class DbSeeder implements CommandLineRunner {
         residentRepo.save(karol);
         residentRepo.save(robson);
 
-
         //ESTATE
 
         Estate estate = new Estate("Sezamowe osiedle", "ul. Sezamkowa 3 Warszawa", "533324876");
         estateRepo.save(estate);
 
         List<Flat> flats =  seedFlats(furnitures);
-
         Building building = new Building("BLUE", "ul. Sezamkowa 3/A",estate,flats);
-
         buildingRepo.save(building);
 
         robson.setFlats(flats);
 
-        for (Flat f : flats)flatRepo.save(f);
+        flatRepo.saveAll(flats);
 
         //BOARD
 
         Board board = new Board();
-
         Annoucement annoucement = new Annoucement("SMIECI", "wyrzucamy smieci", LocalDate.now(),adam);
+
         board.addAnnoucment(annoucement);
         board.setBuilding(building);
 
@@ -91,24 +89,24 @@ public class DbSeeder implements CommandLineRunner {
     private List<Flat> seedFlats(List<Furniture> furnitures) {
         List<Flat> flatsList = new ArrayList<>();
         for (int i = 1; i <= 50; i++) {
-            flatsList.add(new Apartment(i, i + randCode(), "Aparteament 3 mieszkania z widokiem na morze", 3, 45.50, 2000.,furnitures,50+i ));
+            flatsList.add(new Apartment(i, i + randCode(), "Aparteament 3 pokojowy  z widokiem na morze", 3, 45.50, 2000.,50+i ));
         }
         for (int i = 1; i <= 10; i++) {
-            flatsList.add(new Studio(i, i + randCode(), "Kawalerka 1 mieszkanie z kuchnia", 1, 45.50, 2000.,furnitures));
+            flatsList.add(new Studio(i, i + randCode(), "Kawalerka 2 pokojowa z kuchnia", 2, 45.50, 2000.));
         }
         for (int i = 1; i <= 3; i++) {
-            flatsList.add(new Penthouse(i, i + randCode(), "Luksusowy apartament z 6 mieszkania z widokiem na morze z basenem", 3, 45.50, 2000.,furnitures, true));
+            flatsList.add(new Penthouse(i, i + randCode(), "Luksusowy apartament z 4 pokojami z widokiem na morze z basenem", 4, 45.50, 2000., true));
         }
 
-
+        flatsList.get(0).addFurnitures(furnitures);
 
         return flatsList;
     }
 
     private String randCode() {
-        String code = "";
+        StringBuilder code = new StringBuilder();
         for (int i = 0; i < 4; i++) {
-            code += (int)(Math.random()*10);
+            code.append((int) (Math.random() * 10));
         }
         return "#" + code;
     }
@@ -121,18 +119,16 @@ public class DbSeeder implements CommandLineRunner {
 
         List<IotDevice> res = Arrays.asList(lamps, assistant, soundSystem);
 
-        for (IotDevice d : res) iotDeviceRepo.save(d);
+        iotDeviceRepo.saveAll(res);
     }
 
     private List<Furniture> seedFurnitures() {
-        Furniture table = new Furniture("Talbe", 100, 100, 200);
-        Furniture chair = new Furniture("Chair", 50, 50, 50);
-        Furniture sofa = new Furniture("Sofa", 150, 150, 150);
-        Furniture wardrobe = new Furniture("Wardrobe", 150, 50, 150);
-
-        List<Furniture> res = Arrays.asList(table, chair, sofa, wardrobe);
+        Furniture table = new Furniture("Talbe", 100., 100., 200.);
+        Furniture chair = new Furniture("Chair", 50., 50., 50.);
+        Furniture sofa = new Furniture("Sofa", 150., 150., 150.);
+        Furniture wardrobe = new Furniture("Wardrobe", 150., 50., 150.);
 
 
-        return res;
+        return Arrays.asList(table, chair, sofa, wardrobe);
     }
 }
