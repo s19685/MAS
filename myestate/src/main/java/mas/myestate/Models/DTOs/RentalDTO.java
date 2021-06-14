@@ -4,7 +4,8 @@ import java.time.LocalDate;
 
 public class RentalDTO {
 
-    private Long residentId;
+    private String firstName;
+    private String lastName;
     private Long flatId;
     private LocalDate dateFrom;
     private LocalDate dateTo;
@@ -12,12 +13,20 @@ public class RentalDTO {
     public RentalDTO() {
     }
 
-    public Long getResidentId() {
-        return residentId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setResidentId(Long residentId) {
-        this.residentId = residentId;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Long getFlatId() {
@@ -44,4 +53,14 @@ public class RentalDTO {
         this.dateTo = dateTo;
     }
 
+    @Override
+    public String toString() {
+        return "RentalDTO{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", flatId=" + flatId +
+                ", dateFrom=" + dateFrom +
+                ", dateTo=" + dateTo +
+                '}';
+    }
 }

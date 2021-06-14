@@ -25,10 +25,15 @@ public class RentalService {
     }
 
     public void createNewRent(RentalDTO r) {
-        Resident resident = residentRepo.findById(r.getResidentId()).orElseThrow();
+        System.out.println(r.toString());
+//        Resident resident = residentRepo.findById(r.getResidentId()).orElseThrow();
+
+        Resident resident =  new Resident(r.getFirstName(),r.getLastName());
         Flat flat = flatRepo.findById(r.getFlatId()).orElseThrow();
 
         Rental res = new Rental(r.getDateFrom(), r.getDateTo(), flat, resident);
+
+        residentRepo.save(resident);
         rentRepo.save(res);
     }
 }

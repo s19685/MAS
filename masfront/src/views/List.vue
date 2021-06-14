@@ -1,7 +1,6 @@
 <template>
   <div class="listHolder">
-      <FlatRow />
-      <!-- <FlatRow v-for="item in results" :key="item.id" :apidata="item"/> -->
+      <FlatRow v-for="item in results" :key="item.id" :apidata="item"/>
   </div>
 </template>
 

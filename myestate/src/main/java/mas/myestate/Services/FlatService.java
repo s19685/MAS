@@ -47,7 +47,7 @@ public class FlatService {
             fur.add(new FurnitureDTO(fu.getName(),fu.getHeight(),fu.getWidth(),fu.getLength()));
         }
 
-        return new FlatDTO(f.getId(), f.getName(), f.getArea(), f.getPrice(), f.getDetails(), fur);
+        return new FlatDTO(f.getId(), f.getName(), f.getArea(), f.getPrice(), f.getDetails(),f.getEntrycode(), fur);
     }
 
     public void addDevicesToFlat(Long id, PickedDevicesDTO devices) {

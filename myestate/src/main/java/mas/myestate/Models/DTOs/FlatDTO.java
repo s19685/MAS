@@ -11,18 +11,20 @@ public class FlatDTO {
     private Double area;
     private Double price;
     private String desc;
+    private String entryCode;
     private List<FurnitureDTO> furnitures;
 
 
     public FlatDTO() {
     }
 
-    public FlatDTO(Long id, String name, Double area, Double price, String desc, List<FurnitureDTO> furnitures) {
+    public FlatDTO(Long id, String name, Double area, Double price, String desc, String entryCode, List<FurnitureDTO> furnitures) {
         this.id = id;
         this.name = name;
         this.area = area;
         this.price = price;
         this.desc = desc;
+        this.entryCode = entryCode;
         this.furnitures = furnitures;
     }
 
@@ -60,6 +62,14 @@ public class FlatDTO {
 
     public String getDesc() {
         return desc;
+    }
+
+    public String getEntryCode() {
+        return entryCode;
+    }
+
+    public void setEntryCode(String entryCode) {
+        this.entryCode = entryCode;
     }
 
     public void setDesc(String desc) {

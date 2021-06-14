@@ -16,7 +16,7 @@ const routes = [
     component: () => import('../views/Flat.vue')
   },
   {
-    path: '/form',
+    path: '/form/:id',
     name: 'Form',
     component: () => import('../views/Form.vue')
   },

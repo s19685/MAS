@@ -1,9 +1,9 @@
 <template>
   <div class="holder">
-    <FlatRow />
+    <FlatRow :apidata="this.result"/>
     <form >
       <label for="firstname">First Name:</label>
-      <input type="text" name="firstname" v-model="username" />
+      <input type="text" name="firstname" v-model="firstname" />
 
       <label for="lastname">Last Name:</label>
       <input type="text" name="lastname" v-model="lastname" />
@@ -14,7 +14,7 @@
       <label for="dateto">Date to:<sup>*</sup></label>
       <input type="date" name="dateto" v-model="dateTo" :min="dateFrom"/>
 
-      <button type="button" name="button" @click="apiPut"><router-link to="/summary">OK</router-link></button>
+      <button type="button" name="button" @click="apiPut">OK</button>
     </form>
  </div>
 </template>
@@ -29,33 +29,34 @@ import axios from 'axios';
     },
     data(){
       return{
-        username:"",
+        firstname:"",
         lastname:"",
         dateFrom:"",
         dateTo:"",
-        results:[]
+        result:[]
       }
     },
     created(){
-      axios.get(this.API_URL +"flat/")
+      axios.get(this.API_URL +"flat/"+this.$route.params.id)
       .then((response) =>{
         console.log(response);
-        this.results = response.data;
+        this.result = response.data;
       })
     },
     methods:{
       apiPut(){
-        console.log("elo");
-        // axios.put(this.API_URL+"rental",
-        // {
-        //   username:this.username,
-        //   lastname:this.lastname,
-        //   apartamentid:this.flatId,
-        //   dateFrom:this.dateFrom,
-        //   dateTo:this.dateTo
-        // }).then((response) =>{
-        //   console.log(response);
-        // })
+        console.log(this.result.id);
+        axios.post(this.API_URL+"rental",
+        {
+          firstName:this.firstname,
+          lastName:this.lastname,
+          flatId:this.result.id,
+          dateFrom:this.dateFrom,
+          dateTo:this.dateTo
+        }).then((response) =>{
+          console.log(response);
+        })
+        this.$router.push({name:"Summary", params:{data:this.result}})
       }
     }
 

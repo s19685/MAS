@@ -3,25 +3,25 @@
     <img alt="Vue logo" src="@/assets/logo.png">
     <div class="row">
       <div class="">
-        <h1>NAME</h1>
-        <p>metry</p>
+        <h1>{{ apidata.name }}</h1>
+        <p>{{ apidata.area }}</p>
       </div>
       <div class="">
-        <h1>CENA</h1>
-        <button type="button" name="button"><router-link to="/form">GO</router-link></button>
+        <h1>{{ apidata.price }}</h1>
+        <button type="button" name="button"><router-link :to="'/form/'+apidata.id">GO</router-link></button>
       </div>
     </div>
     <div class="desc">
-      opis
+      {{ apidata.desc }}
     </div>
     <h1>Wyposarzenie:</h1>
     <div class="center">
-      <div class="row" v-for="item in items" :key="item.id">
+      <div class="row" v-for="item in apidata.furnitures" :key="item.id">
         <div class="">
-          {{ item.a }}
+          {{ item.name }}
         </div>
         <div class="">
-          {{ item.b }}X{{item.c}}
+          {{ item.height }} X {{item.length}} X {{item.width}}
         </div>
       </div>
     </div>
@@ -31,11 +31,16 @@
 
 <script>
   export default {
-    data(){
-            return{
-              items:[{a:"XDD",b:"1234",c:"2134"},{a:"XXD",b:"12d4"}]
-            }
-          },
+    props:{
+      apidata:{
+        id:Number,
+        name:String,
+        desc:String,
+        price:Number,
+        area:Number,
+        furnitures:[]
+      }
+    }
   }
 </script>
 

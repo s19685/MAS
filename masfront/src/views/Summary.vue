@@ -1,33 +1,26 @@
 <template>
-  <div class="listHolder">
-    <h1>SUKCES</h1>
+  <div class="banner">
+    <h2>SUKCES</h2>
+    udalo Ci sie wynajac mieszkanie: {{this.flat.name}}
+    <p>Twoj kod do wejscia: {{this.flat.entryCode}}</p>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-
   export default {
-      components:{
-      },
       data(){
         return{
-          results:[]
+          flat: this.$route.params.data
         }
-      },
-      created(){
-        axios.get(this.API_URL +"flat/")
-             .then((response) =>{
-               console.log(response);
-               this.results = response.data;
-             })
       }
   }
 </script>
 
 <style scoped>
-.listHolder{
-  margin: 20px;
+.banner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 </style>

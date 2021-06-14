@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" src="./assets/logo.png">
-      <h1>My Estate</h1>
+      <img alt="Vue logo" src="./assets/logo.png" to="/">
+      <h1><router-link class="xd" to="/">My Estate</router-link></h1>
     </header>
-
-
+    
     <router-view/>
   </div>
 </template>
@@ -42,6 +41,11 @@ h1{
 
 body{
   margin: 0;
+}
+
+.xd{
+  text-decoration: none;
+  color: white;
 }
 
 

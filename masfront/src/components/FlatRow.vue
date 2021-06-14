@@ -2,23 +2,25 @@
   <div class="row">
     <img alt="Vue logo" src="@/assets/logo.png">
     <div class="info">
-      <h1>NAME</h1>
-      <p>jakis tam opis tego tego</p>
-      <h1>cena</h1>
+      <h1>{{ apidata.name }}</h1>
+      <p>{{ apidata.desc }}</p>
+      <h1>{{ apidata.price }}</h1>
     </div>
-    <button type="button" name="button"><router-link :to="'/flat/'+this.id">GO</router-link></button>
-
+    <button type="button" name="button"><router-link :to="'/flat/'+apidata.id">GO</router-link></button>
   </div>
 </template>
 
 
 <script>
   export default {
-    data(){
-      return{
-        id:1
+    props:{
+      apidata:{
+        id:Number,
+        name:String,
+        desc:String,
+        price:Number
       }
-    },
+    }
   }
 </script>
 
@@ -49,6 +51,7 @@ button{
 
 .info{
   margin-left: -160px;
+  width:50%;
 
 }
 

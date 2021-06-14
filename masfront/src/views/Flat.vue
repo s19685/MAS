@@ -1,6 +1,6 @@
 <template>
   <div class="listHolder">
-    <FlatDetails />
+    <FlatDetails :apidata="results" />
   </div>
 </template>
 

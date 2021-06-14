@@ -45,7 +45,7 @@ public class Resident {
     public Resident(String firtName, String lastName) {
         this.firtName = firtName;
         this.lastName = lastName;
-        this.roles = Role.USER;
+        this.roles = Role.RESIDENT;
     }
 
     public Resident(String firtName, String lastName, String accountNumber) {
