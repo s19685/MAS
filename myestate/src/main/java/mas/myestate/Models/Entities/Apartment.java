@@ -19,15 +19,17 @@ public class Apartment extends Flat {
     }
 
     public Apartment(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price, Building building, List<Furniture> furnitures, Integer parkingNumber) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price, building, furnitures);
+                     Double price, Building building, Integer parkingNumber) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price, building);
         this.parkingNumber = parkingNumber;
     }
 
-    public Apartment(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price, Integer parkingNumber) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price);
-        this.parkingNumber = parkingNumber;
+    public static Flat createApartment(int flatNumber, String entrycode, String details, Integer roomsNumber,
+                                       Double area, Double price, Building building, Integer parkingNumber) throws Exception {
+        if (building == null) throw new Exception("Building does not exists");
+        Flat flat = new Apartment(flatNumber, entrycode, details, roomsNumber, area, price, building,parkingNumber);
+        building.addFlat(flat);
+        return flat;
     }
 
     public Integer getParkingNumber() {

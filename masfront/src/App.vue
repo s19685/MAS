@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" src="./assets/logo.png" to="/">
+      <img class="head" alt="Vue logo" src="./assets/logo.png" to="/">
       <h1><router-link class="xd" to="/">My Estate</router-link></h1>
     </header>
-    
+
     <router-view/>
   </div>
 </template>
@@ -28,7 +28,7 @@ header{
   flex-direction: row;
 }
 
-img{
+.head{
   transform: scale(0.7 );
 }
 

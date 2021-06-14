@@ -24,16 +24,26 @@ public class RentalService {
         this.flatRepo = flatRepo;
     }
 
-    public void createNewRent(RentalDTO r) {
+    public Long createNewRent(RentalDTO r) {
         System.out.println(r.toString());
 //        Resident resident = residentRepo.findById(r.getResidentId()).orElseThrow();
 
-        Resident resident =  new Resident(r.getFirstName(),r.getLastName());
+        Resident resident = new Resident(r.getFirstName(), r.getLastName());
         Flat flat = flatRepo.findById(r.getFlatId()).orElseThrow();
 
         Rental res = new Rental(r.getDateFrom(), r.getDateTo(), flat, resident);
 
         residentRepo.save(resident);
-        rentRepo.save(res);
+        Rental dto = rentRepo.save(res);
+
+        return dto.getId();
+
+    }
+
+    public String getCost(Long id) {
+        Rental rental = rentRepo.findById(id).orElseThrow();
+
+
+        return rental.getCost() + " zl";
     }
 }

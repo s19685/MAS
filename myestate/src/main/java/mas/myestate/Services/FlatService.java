@@ -54,10 +54,13 @@ public class FlatService {
         Flat flat = flatRepo.findById(id).orElseThrow();
         List<IotDevice> devicesList = new ArrayList<>();
 
-        for (Long l : devices.getIds()) {
-            IotDevice device = deviceRepo.findById(l).orElseThrow();
-            devicesList.add(device);
-        }
+        System.out.println(devices.getFirst());
+        System.out.println(devices.getSecond());
+        System.out.println(devices.getThird());
+
+        if(devices.getFirst()) devicesList.add(deviceRepo.findById(1L).orElseThrow());
+        if(devices.getSecond()) devicesList.add(deviceRepo.findById(2L).orElseThrow());
+        if(devices.getThird()) devicesList.add(deviceRepo.findById(3L).orElseThrow());
 
         flat.setDevices(devicesList);
 

@@ -34,6 +34,9 @@ public abstract class Flat {
     @Column(nullable = false)
     private Double price;
 
+    @Column(nullable = false)
+    private Boolean isDeleted = false;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private State state;
@@ -59,7 +62,7 @@ public abstract class Flat {
     public Flat() {}
 
     public Flat(int flatNumber, String entrycode, String details, Integer roomsNumber,
-                Double area, Double price, Building building, List<Furniture> furnitures) {
+                Double area, Double price, Building building) {
         this.state = State.FOR_SALE;
         this.flatNumber = flatNumber;
         this.entrycode = entrycode;
@@ -68,20 +71,17 @@ public abstract class Flat {
         this.area = area;
         this.price = price;
         this.building = building;
-        this.furnitures = furnitures;
-    }
-
-    public Flat(int flatNumber, String entrycode, String details, Integer roomsNumber,
-                Double area, Double price) {
-        this.state = State.FOR_SALE;
-        this.flatNumber = flatNumber;
-        this.entrycode = entrycode;
-        this.details = details;
-        this.roomsNumber = roomsNumber;
-        this.area = area;
-        this.price = price;
         furnitures = new ArrayList<>();
     }
+
+//    public static Flat createFlat(int flatNumber, String entrycode, String details, Integer roomsNumber,
+//                                  Double area, Double price, Building building) throws Exception {
+//        if(building ==null) throw new Exception("Building does not exists");
+//        Flat flat = new Flat() {
+//        }
+//    }
+
+
 
     public String getName(){
         return this.getClass().getSimpleName() + " " + getRoomsNumber() + " pokoje";
@@ -142,6 +142,14 @@ public abstract class Flat {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public State getState() {

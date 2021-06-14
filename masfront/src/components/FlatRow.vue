@@ -4,7 +4,7 @@
     <div class="info">
       <h1>{{ apidata.name }}</h1>
       <p>{{ apidata.desc }}</p>
-      <h1>{{ apidata.price }}</h1>
+      <h1>{{ apidata.price }} zl za dzien</h1>
     </div>
     <button type="button" name="button"><router-link :to="'/flat/'+apidata.id">GO</router-link></button>
   </div>

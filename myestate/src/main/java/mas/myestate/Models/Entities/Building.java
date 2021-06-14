@@ -1,10 +1,15 @@
 package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Building {
+
+    public static final int MIN_FLAT_COUNT = 50;
+    public static final int MAX_FLAT_COUNT = 80;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +22,9 @@ public class Building {
     @Column(nullable = false)
     private String address;
 
+    @Column(nullable = false)
+    private Boolean isDeleted = false;
+
     @ManyToOne
     @JoinColumn(name = "estate_id", referencedColumnName = "id")
     private Estate estate;
@@ -27,15 +35,21 @@ public class Building {
     @OneToMany(mappedBy = "building")
     private List<Flat> flats;
 
-    public Building() {
+    private Building() {
     }
 
-    public Building(String name, String address, Estate estate, List<Flat> flats) {
+    private Building(String name, String address, Estate estate) {
         this.name = name;
         this.address = address;
         this.estate = estate;
-        this.flats = flats;
-        for (Flat f: flats) f.setBuilding(this);
+        flats = new ArrayList<>();
+    }
+
+    public static Building createBuilding(String name, String address, Estate estate) throws Exception {
+        if(estate == null) throw new Exception("Estate does not exists");
+        Building building = new Building(name,address,estate);
+        estate.addBuilding(building);
+        return building;
     }
 
     public Long getId() {
@@ -62,6 +76,14 @@ public class Building {
         this.address = address;
     }
 
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
     public Estate getEstate() {
         return estate;
     }
@@ -82,7 +104,19 @@ public class Building {
         return flats;
     }
 
-    public void setFlats(List<Flat> flats) {
+    public void setFlats(List<Flat> flats) throws Exception {
+        if(flats.size() < MIN_FLAT_COUNT || flats.size() >MAX_FLAT_COUNT ) throw new Exception("Too much flats");
         this.flats = flats;
+    }
+
+    public void addFlat(Flat flat) throws Exception {
+        if(flats.size() == MAX_FLAT_COUNT ) throw new Exception("Could not add more flats");
+        flats.add(flat);
+    }
+
+    public void deleteBuilding() {
+        for (Flat f : flats) f.setDeleted(true);
+        setDeleted(true);
+
     }
 }

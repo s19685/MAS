@@ -2,6 +2,10 @@ package mas.myestate.Models.Entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
+
 
 @Entity
 public class Rental {
@@ -73,5 +77,20 @@ public class Rental {
 
     public void setResident(Resident resident) {
         this.resident = resident;
+    }
+
+    public Double getCost(){
+        Double d = 0.;
+
+        long days = DAYS.between(startDate,endDate);
+
+        d = days * getFlat().getPrice();
+        List<IotDevice> devices = getFlat().getDevices();
+        if(!devices.isEmpty()){
+            for (IotDevice dev : devices) {
+                d += dev.getPrice()*days;
+            }
+        }
+        return d;
     }
 }

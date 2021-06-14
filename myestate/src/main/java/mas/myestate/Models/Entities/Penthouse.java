@@ -13,19 +13,21 @@ public class Penthouse extends Flat {
     @Column(nullable = false)
     private boolean isWithPool;
 
-    public Penthouse() {
+    private Penthouse() {
     }
 
-    public Penthouse(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price, Building building, List<Furniture> furnitures, boolean isWithPool) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price, building, furnitures);
+    private Penthouse(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
+                     Double price, Building building, boolean isWithPool) {
+        super(flatNumber, entrycode, details, roomsNumber, area, price, building);
         this.isWithPool = isWithPool;
     }
 
-    public Penthouse(int flatNumber, String entrycode, String details, Integer roomsNumber, Double area,
-                     Double price,  boolean isWithPool) {
-        super(flatNumber, entrycode, details, roomsNumber, area, price);
-        this.isWithPool = isWithPool;
+    public static Flat createPenthouse(int flatNumber, String entrycode, String details, Integer roomsNumber,
+                                    Double area, Double price, Building building, boolean isWithPool) throws Exception {
+        if (building == null) throw new Exception("Building does not exists");
+        Flat flat = new Penthouse(flatNumber, entrycode, details, roomsNumber, area, price, building,isWithPool);
+        building.addFlat(flat);
+        return flat;
     }
 
     public boolean isWithPool() {

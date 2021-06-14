@@ -20,6 +20,9 @@ public class Annoucement {
     @Column(nullable = false)
     private LocalDate date;
 
+    @Column(nullable = false)
+    private Boolean isDeleted = false;
+
     @ManyToOne
     @JoinColumn(name = "board_id", referencedColumnName = "id")
     private Board board;
@@ -28,13 +31,21 @@ public class Annoucement {
     @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Resident author;
 
-    public Annoucement(){}
+    private Annoucement(){}
 
-    public Annoucement(String titile, String details, LocalDate date, Resident author) {
+    private Annoucement(String titile, String details, LocalDate date, Resident author,Board board) {
         this.titile = titile;
         this.details = details;
         this.date = date;
         this.author = author;
+        this.board = board;
+    }
+
+    public static Annoucement createAnn(String titile, String details, LocalDate date, Resident author, Board board) throws Exception {
+        if(board == null) throw new Exception("Board does not exists");
+        Annoucement  annoucement = new Annoucement(titile,details,date,author,board);
+        board.addAnnoucment(annoucement);
+        return annoucement;
     }
 
     public Long getId() {
@@ -67,6 +78,14 @@ public class Annoucement {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public Board getBoard() {

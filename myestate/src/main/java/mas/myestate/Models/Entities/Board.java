@@ -14,6 +14,9 @@ public class Board {
     @Column(unique = true, nullable = false)
     private Long id;
 
+    @Column(nullable = false)
+    private Boolean isDeleted = false;
+
     @OneToMany(mappedBy = "board")
     private List<Annoucement> annoucements = new ArrayList<>();
 
@@ -32,11 +35,20 @@ public class Board {
         this.id = id;
     }
 
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
     public List<Annoucement> getAnnoucements() {
         return annoucements;
     }
 
-    public void setAnnoucements(List<Annoucement> annoucements) {
+    public void setAnnoucements(List<Annoucement> annoucements) throws Exception {
+        if(annoucements.size() > MAX_BOARD_ITEMS ) throw new Exception("Too much ann");
         this.annoucements = annoucements;
     }
 
@@ -48,9 +60,20 @@ public class Board {
         this.building = building;
     }
 
-    public void addAnnoucment(Annoucement annoucement) {
+    public void addAnnoucment(Annoucement annoucement) throws Exception {
+        if(annoucements.size() == MAX_BOARD_ITEMS ) throw new Exception("Could not add more ann");
         annoucement.setBoard(this);
         annoucements.add(annoucement);
     }
+
+    public void deleteBoard() {
+
+        for (Annoucement a : annoucements) {
+            a.setDeleted(true);
+        }
+        setDeleted(true);
+    }
+
+
 }
 

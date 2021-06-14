@@ -5,6 +5,7 @@ import mas.myestate.Models.Enums.Role;
 import javax.persistence.*;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Resident {
@@ -29,9 +30,16 @@ public class Resident {
     @Column(nullable = true)
     private Double salary;
 
+//    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false)
+//    private Role roles;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role roles;
+    @CollectionTable(name = "ROLES"
+            , joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "user_role", nullable = false)
+    private Set<Role> roles = EnumSet.noneOf(Role.class);
 
     @OneToMany(mappedBy = "resident")
     private List<Rental> rentals;
@@ -45,21 +53,26 @@ public class Resident {
     public Resident(String firtName, String lastName) {
         this.firtName = firtName;
         this.lastName = lastName;
-        this.roles = Role.RESIDENT;
+//        this.roles = Role.RESIDENT;
+        roles.add(Role.RESIDENT);
     }
 
     public Resident(String firtName, String lastName, String accountNumber) {
         this.firtName = firtName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
-        this.roles = Role.OWNER;
+//        this.roles = Role.OWNER;
+        roles.add(Role.OWNER);
+
     }
 
     public Resident(String firtName, String lastName, Double salary) {
         this.firtName = firtName;
         this.lastName = lastName;
         this.salary = salary;
-        this.roles = Role.SUPERVISOR;
+//        this.roles = Role.SUPERVISOR;
+        roles.add(Role.SUPERVISOR);
+
     }
 
     public Long getId() {
@@ -110,9 +123,18 @@ public class Resident {
         this.salary = salary;
     }
 
-    public Role getRoles() { return roles; }
+//    public Role getRoles() { return roles; }
+//
+//    public void setRoles(Role roles) { this.roles = roles; }
 
-    public void setRoles(Role roles) { this.roles = roles; }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public List<Rental> getRentals() {
         return rentals;
@@ -138,5 +160,9 @@ public class Resident {
 
     public void rentFlat(Flat flat){
 
+    }
+
+    public void addRole(Role role) {
+        roles.add(role);
     }
 }

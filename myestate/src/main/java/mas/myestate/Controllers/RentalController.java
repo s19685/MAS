@@ -19,8 +19,13 @@ public class RentalController {
     }
 
     @PostMapping()
-    public void createRent(@RequestBody RentalDTO rental) {
-        service.createNewRent(rental);
+    public Long createRent(@RequestBody RentalDTO rental) {
+        return service.createNewRent(rental);
+    }
+
+    @GetMapping("/{id}")
+    public String getCost(@PathVariable Long id){
+        return service.getCost(id);
     }
 
 
